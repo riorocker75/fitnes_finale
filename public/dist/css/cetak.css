@@ -1,0 +1,35 @@
+.cetak_transaksi{
+	width:30cm;
+	padding: 0.48cm 2cm 1cm 2.5cm;
+	margin: 1cm auto;
+}
+
+.cetak_laporan {
+	/* font-family: "Times New Roman", Times, serif !important; */
+	width: 21cm;
+	min-height: 29.7cm;
+	/* padding: 1cm 2cm; */
+	padding: 0.48cm 2cm 1cm 2.5cm;
+	margin: 1cm auto;
+	/* border: 1px #d3d3d3 solid; */
+	border-radius: 5px;
+	/* background: red; */
+	position: relative;
+	font-size: 12pt;
+}
+
+.judul_laporan{
+    text-align: center;
+    font-weight: 700;
+}
+table{
+    width: 100%;
+
+}
+.tabel_laporan{
+    margin-top:20px;
+    border:2px solid #c1c2c3;
+}
+.tabel_isi th,td{
+    padding:2px 5px;
+}
