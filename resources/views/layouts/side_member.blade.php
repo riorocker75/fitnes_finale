@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('/')}}" class="nav-link">Home</a>
+        <a href="{{url('/dashboard/member')}}" class="nav-link">Home</a>
       </li>
       
     </ul>
@@ -43,8 +43,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{url('/')}}" class="brand-link">
-      <img src="{{url('/')}}/logo/logo.png" alt="Fitness" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="{{url('/dashboard/member')}}" class="brand-link">
+      <img src="" alt="Fitness" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Fitness</span>
     </a>
 
@@ -54,7 +54,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
        
         <div class="info">
-          <a href="#" class="d-block">{{" Nama" }}</a>
+          <a href="#" class="d-block">{{Session::get('mb_username') }}</a>
         </div>
       </div>
 

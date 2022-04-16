@@ -41,7 +41,7 @@ class LoginCtrl extends Controller
                     Session::put('adm_username', $data->username);
                     Session::put('level', 1);
                     Session::put('login-adm',TRUE);
-                    return redirect('/')->with('alert-success','Selamat Datang Kembali Admin');
+                    return redirect('/dashboard/admin')->with('alert-success','Selamat Datang Kembali Admin');
                 }else{
                     return redirect('/login')->with('alert-danger','Password atau Email, Salah !');
                 }
@@ -49,10 +49,10 @@ class LoginCtrl extends Controller
                 Session::flush();
                 
                 if(Hash::check($password,$data->password)){
-                    Session::put('kp_username', $data->username);
+                    Session::put('mb_username', $data->username);
                     Session::put('level', 2);
-                    Session::put('login-kp',TRUE);
-                    return redirect('/dashboard/kapus')->with('alert-success','Selamat Datang Kembali');
+                    Session::put('login-mb',TRUE);
+                    return redirect('/dashboard/member')->with('alert-success','Selamat Datang Kembali');
                 }else{
                     return redirect('/login')->with('alert-danger','Password atau Email, Salah !');
                 }

@@ -33,6 +33,10 @@ class MemberCtrl extends Controller
         
     }
 
+    function index(){
+        return view('member.member');
+    }
+
 
 
 

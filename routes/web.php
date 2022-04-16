@@ -50,6 +50,7 @@ Bagian besar admin
 ---------------------------------------------
 */
 
+Route::get('/dashboard/admin',[AdminCtrl::class,'index']);
 
 
 // Paket
@@ -110,7 +111,7 @@ Route::post('/ajax/cek_member', [AdminCtrl::class,'cek_member']);
 Bagian besar member
 ---------------------------------------------
 */
-
+Route::get('/dashboard/member',[MemberCtrl::class,'index']);
 
 
 
