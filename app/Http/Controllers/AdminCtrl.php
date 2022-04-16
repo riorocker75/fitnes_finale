@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Hash;
@@ -258,6 +258,7 @@ function member_data(){
 function member_act(Request $request){
      $request->validate([
             'member' => 'required',
+            
         ]);
         $kode_member= "MB-".mt_rand(1000, 9999);
         $kode_trs= "TRS-".mt_rand(10000, 99999);
@@ -270,7 +271,8 @@ function member_act(Request $request){
         ]);
 
         $cek_paket=Paket::where('id',$request->paket)->first();
-        
+        $tgl_awal=Carbon::now();
+        $tgl_akhir=Carbon::now()->addMonths($cek_paket->jangka_waktu);
 
           DB::table('transaksi')->insert([
             'kode_transaksi' =>$kode_trs,
@@ -278,30 +280,146 @@ function member_act(Request $request){
             'id_paket' =>$request->paket,
             'nama_paket' => $cek_paket->nama,
             'harga' => $cek_paket->harga,
-
+            'tgl_awal' => $tgl_awal,
+            'tgl_akhir' => $tgl_akhir,
             'status' => 1
         ]);
 
-
-
-        return redirect('/dashboard/paket/data')->with('alert-success','Data sudah terkirim');
+        return redirect('/dashboard/member/data')->with('alert-success','Data sudah terkirim');
 
 }
  
-function member_edit(){}
+function member_edit($id){
+     $data=Member::orderBy('id','desc')->get();
+    return view('admin.member_edit',[
+        'data' => $data
+    ]);
+}
 function member_update(Request $request){}
-function member_delete(){}
+function member_delete($id){
+    $member=Member::where('id',$id)->first();
+   Pengunjung::where('id',$member->id_pengunjung)->update([
+       'lvl' => 1
+   ]);
+     Member::where('id',$id)->delete();
+        return redirect('/dashboard/member/data')->with('alert-success','Data Berhasil');  
+}
+
+
+// penjaga
+function penjaga_data(){
+    $data=Penjaga::orderBy('id','desc')->get();
+    return view('admin.penjaga_data',[
+        'data' => $data
+    ]);
+}
+function penjaga_add(){
+    return view('admin.penjaga_add');
+}
+function penjaga_act(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required'
+        ]);
+
+         DB::table('penjaga')->insert([
+            'nama' => $request->nama,
+            'nik' =>$request->nik,
+            'jenis_kelamin' =>$request->kelamin,
+            'tanggal_lahir' =>$request->tgl_lhr,
+            'tempat_lahir' =>$request->tmp_lhr,
+            'alamat' => $request->alamat,
+            'no_hp' =>$request->no_hp,
+            'lvl' => 0,
+            'status' => 1,
+        ]);
+
+        return redirect('/dashboard/penjaga/data')->with('alert-success','Data sudah tersimpan');
+
+}
+
+function penjaga_edit($id){
+       $data=penjaga::where('id',$id)->get();
+    
+ return view('admin.penjaga_edit',[
+        'data'=> $data
+    ]); 
+}
+function penjaga_update(Request $request){
+       $request->validate([
+            'nama' => 'required',
+            'nik' => 'required'
+        ]);
+         $id=$request->id;
+
+         DB::table('penjaga')->where('id',$id)->update([
+            'nama' => $request->nama,
+            'nik' =>$request->nik,
+            'jenis_kelamin' =>$request->kelamin,
+            'tanggal_lahir' =>$request->tgl_lhr,
+            'tempat_lahir' =>$request->tmp_lhr,
+            'alamat' => $request->alamat,
+            'no_hp' =>$request->no_hp,
+   
+        ]);
+
+        return redirect('/dashboard/penjaga/data')->with('alert-success','Data sudah terbaru');
+
+}
+
+function penjaga_delete($id){
+    Penjaga::where('id',$id)->delete();
+        return redirect('/dashboard/penjaga/data')->with('alert-success','Data sudah terhapus');
+}
+
+
+
+
+
 
 
 // absensi
 
-function absesnsi_data(){}
-function absesnsi_add(){}
-function absesnsi_act(Request $request){}
+function absensi_data(){}
+function absensi_add(){}
+function absensi_act(Request $request){
 
-function absesnsi_edit(){}
-function absesnsi_update(Request $request){}
-function absesnsi_delete(){}
+        $request->validate([
+            'cek_member' => 'required'
+        ]);
+
+        $id=$request->cek_member;
+        $pengunjung=Pengunjung::where('id',$id)->first();
+
+        if($pengunjung->lvl == 1){
+            $kode_trs= "TRSP-".mt_rand(10000, 99999);
+            DB::table('transaksi')->insert([
+                'kode_transaksi' => $kode_trs,
+                'id_member' => $id,
+                'id_paket' => 0,
+                'nama_paket' => "Harian",
+                'harga' => $request->bayar,
+                'tgl_awal' => date('Y-m-d'),
+                'tgl_akhir' => date('Y-m-d'),
+                 'status' => 0   
+            ]);
+        }
+
+         DB::table('absensi')->insert([
+            'id_pengunjung' => $request->cek_member,
+            'tanggal' => date('Y-m-d'),
+            'jam_masuk' => $request->jam_masuk,
+            'jam_keluar' => $request->jam_keluar,
+        ]);
+
+        return redirect('/')->with('alert-success','Data sudah tersimpan');
+
+
+}
+
+function absensi_edit(){}
+function absensi_update(Request $request){}
+function absensi_delete(){}
 
 
 
@@ -329,6 +447,28 @@ function absesnsi_delete(){}
      }
 
  }
+
+
+//  cek member absesni
+function cek_member(Request $request){
+    $id=$request->cek_member;
+    $pengunjung=Pengunjung::where('id',$id)->first();
+
+    if($pengunjung->lvl == 2){
+
+    }else{
+          echo"
+         <div class='form-group'>
+            <label >Bayar Harian</label>
+            <input type='number' class='form-control' name='bayar'>
+         </div>
+        ";
+    }
+
+
+
+}
+
 
 
 

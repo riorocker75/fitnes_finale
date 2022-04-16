@@ -52,8 +52,7 @@
     {{show_alert()}}
 
 <div class="wrapper">
-
-
+@include('frontend.header')
 
 @yield('content')
 

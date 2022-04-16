@@ -119,7 +119,7 @@
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 
-
+<script src="{{asset('dist/js/adminlte.min.js?v=3.2.0')}}"></script>
 
 <script>
   $(function () {
@@ -128,7 +128,12 @@
     //Initialize Select2 Elements
     $('.select2bs4').select2({
       theme: 'bootstrap4'
-    })
+    });
+
+    $('#absensi-pick').datetimepicker({
+          format: 'HH:mm'
+      });
+
 
     $("#table1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,

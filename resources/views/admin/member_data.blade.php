@@ -109,9 +109,20 @@
                                 <td>
                                     mulai: {{date('Y-m-d',strtotime($transaksi->tgl_awal))}} <br>
                                     akhir: {{date('Y-m-d',strtotime($transaksi->tgl_akhir))}}
+                                    <br>
+
+                                    @php
+                                        $now=date('Y-m-d');
+                                        $lalu=date('Y-m-d', strtotime($transaksi->tgl_akhir))
+                                    @endphp
+                                    @if ($now >= $lalu)
+                                    <label class="badge bg-warning">sudah selesai</label>
+                                    @else
+                                    <label class="badge bg-primary">sedang berjalan</label>
+                                    @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('/dashboard/member/edit/'.$dt->id.'')}}" >Ubah</a>
+                                    {{-- <a href="{{url('/dashboard/member/edit/'.$dt->id.'')}}" >Ubah</a> --}}
                                     <a href="{{url('/dashboard/member/delete/'.$dt->id.'')}}" >Hapus</a>
 
                                 </td>

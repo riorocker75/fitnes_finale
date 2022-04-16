@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Hash;
@@ -20,5 +20,14 @@ use App\Models\Option;
 use App\Models\Absensi;
 class FrontCtrl extends Controller
 {
-    //
+    
+
+    function index(){
+        return view('frontend.home');
+    }
+
+    
+
+
+
 }

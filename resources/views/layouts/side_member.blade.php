@@ -76,44 +76,16 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="{{url('/kapus/pasien')}}" class="nav-link">
+            <a href="{{url('/member/transaksi')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Pasien
+                Riwayat Transaksi
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
 
-           <li class="nav-item">
-            <a href="{{url('/kapus/pegawai')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Pegawai
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-
-            <li class="nav-item">
-            <a href="{{url('/kapus/poli')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Poli
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-
-            <li class="nav-item">
-            <a href="{{url('/kapus/rujukan')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Rujukan
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
+          
 
            <li class="nav-item">
                 <a href="{{url('/kapus/pengaturan/data')}}" class="nav-link ">

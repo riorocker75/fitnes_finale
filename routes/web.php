@@ -30,13 +30,26 @@ Route::post('/login/cek', [LoginCtrl::class,'cek_login']);
 Route::get('/logout', [LoginCtrl::class,'logout']);
 
 
+/*
+--------------------------------------------- 
+Bagian besar front
+---------------------------------------------
+*/
+Route::get('/', [FrontCtrl::class,'index']);
+// Route::get('/front/index', [FrontCtrl::class,'index']);
+
+
+
+
+
+
 
 /*
 --------------------------------------------- 
 Bagian besar admin
 ---------------------------------------------
 */
-Route::get('/', [AdminCtrl::class,'index']);
+
 
 
 // Paket
@@ -66,6 +79,30 @@ Route::post('/dashboard/member/update', [AdminCtrl::class,'member_update']);
 Route::get('/dashboard/member/delete/{id}', [AdminCtrl::class,'member_delete']);
 
 
+// pennjaga
+//pengunjjung
+Route::get('/dashboard/penjaga/data', [AdminCtrl::class,'penjaga_data']);
+Route::get('/dashboard/penjaga/add', [AdminCtrl::class,'penjaga_add']);
+
+Route::post('/dashboard/penjaga/act', [AdminCtrl::class,'penjaga_act']);
+Route::get('/dashboard/penjaga/edit/{id}', [AdminCtrl::class,'penjaga_edit']);
+Route::post('/dashboard/penjaga/update', [AdminCtrl::class,'penjaga_update']);
+Route::get('/dashboard/penjaga/delete/{id}', [AdminCtrl::class,'penjaga_delete']);
+
+
+//absensi
+Route::get('/dashboard/absensi/data', [AdminCtrl::class,'absensi_data']);
+Route::post('/dashboard/absensi/act', [AdminCtrl::class,'absensi_act']);
+Route::get('/dashboard/absensi/edit/{id}', [AdminCtrl::class,'absensi_edit']);
+Route::post('/dashboard/absensi/update', [AdminCtrl::class,'absensi_update']);
+Route::get('/dashboard/absensi/delete/{id}', [AdminCtrl::class,'absensi_delete']);
+
+
+
+
+
+// cek ajax absensi member atau bukan
+Route::post('/ajax/cek_member', [AdminCtrl::class,'cek_member']);
 
 
 /*
@@ -78,11 +115,10 @@ Bagian besar member
 
 
 
-/*
---------------------------------------------- 
-Bagian besar front
----------------------------------------------
-*/
+
+
+
+// --------------------------------------------------
 
 // role 
 Route::get('/dashboard/role/data', [AdminCtrl::class,'role']);
