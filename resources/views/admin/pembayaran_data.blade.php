@@ -62,7 +62,7 @@
                                
 
                                 <td>
-                                <button id="konfirmasi" class="btn btn-success" data-id="{{$da->id}}" data-nama="{{$cek_pengunjung->nama}}" data-harga="{{$da->harga}}">Konfirmasi</button>   
+                                <button id="konfirmasi" class="btn btn-success konfirmasi" data-id="{{$da->id}}" data-nama="{{$cek_pengunjung->nama}}" data-harga="{{$da->harga}}">Konfirmasi</button>   
                                 <a href="{{url('/dashboard/pembayaran/delete/'.$da->id.'')}}" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
@@ -72,35 +72,7 @@
               
                 </table>
 
-                  <script>
-                                    $(document).ready(function () {
-   
-                                        $('#konfirmasi').click(function () {
-                                            var id_konfirmasi = $(this).data('id');
-                                            var nama = $(this).data('nama');
-                                            var harga = $(this).data('harga');
-
-
-                                            var konfirmasi_alert = confirm(`apakah benar ${nama} sudah melakukan pembayaran senilai Rp.${harga} ? `); 
-                                            
-                                            if(konfirmasi_alert ==true){
-                                                    $.ajax({
-                                                    headers: {
-                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                        },
-                                                    type:"post",
-                                                    url:"/ajax/konfirmasi",
-                                                    data:{id:id_konfirmasi},
-                                                    success: function(data){          
-                                                        window.location.reload();
-                                                    }
-                                                    });
-
-                                            }
-                                        
-                                        });
-                                        });
-                                </script>
+                 
              
             </div>
          </div>
@@ -113,5 +85,33 @@
     
  </div>   
 
+ <script>
+                                    $(document).ready(function (e) {
+   
+                                        $('.konfirmasi').click(function () {
+                                            var id_konfirmasi = $(this).data('id');
+                                            var nama = $(this).data('nama');
+                                            var harga = $(this).data('harga');
 
+
+                                            var konfirmasi_alert = confirm(`apakah benar ${nama} sudah melakukan pembayaran senilai Rp.${harga} ? `); 
+                                            
+                                            if(konfirmasi_alert == true){
+                                                    $.ajax({
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                        },
+                                                    type:"post",
+                                                    url:"/ajax/konfirmasi",
+                                                    data:{id:id_konfirmasi,"_token": "{{ csrf_token() }}"},
+                                                    success: function(data){          
+                                                        window.location.reload();
+                                                    }
+                                                    });
+
+                                            }
+                                        
+                                        });
+                                        });
+                                </script>
 @endsection

@@ -96,12 +96,16 @@
                       @foreach ($data as $dt)
 
                       @php
+                      $pengunjung=App\Models\Pengunjung::where('id',$dt->id_pengunjung)->first();
                         $transaksi=App\Models\Transaksi::where('kode_transaksi',$dt->kode_transaksi)->first();
                         $paket= App\Models\Paket::where('id',$transaksi->id_paket)->first();    
                       @endphp
                            <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$dt->kode_member}}</td>
+                                <td>{{$dt->kode_member}}
+                                  <p>{{$pengunjung->nama}}</p>
+                                  <p>{{$pengunjung->nik}}</p>
+                                </td>
 
                                 <td>{{$paket->nama}}</td>
                                 <td>

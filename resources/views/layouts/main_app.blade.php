@@ -116,8 +116,8 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
 {{-- <script src="{{asset('dist/js/demo.js')}}"></script> --}}
-<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
-<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+{{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
 
 <script src="{{asset('dist/js/adminlte.min.js?v=3.2.0')}}"></script>
 
@@ -178,4 +178,5 @@
     });
   });
 </script>
+
 </html>
