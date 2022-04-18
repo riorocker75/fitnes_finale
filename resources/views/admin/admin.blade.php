@@ -16,9 +16,6 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-
-
-
     </div>  
     
     <section class="content">
@@ -82,6 +79,8 @@
              Absensi
              <div class="float-right">
                <a data-toggle="modal" data-target="#modal-absensi" class="btn btn-primary">Tambah absensi</a>
+               <a href="{{url('/dashboard/absensi/data')}}" class="btn btn-default">Lihat Data</a>
+
              </div>
             </div>
             @php
@@ -216,12 +215,6 @@
                                         });
                                         });
                                 </script>
-
-
-
-
-
-
 
   </div>
   <div class="modal-footer justify-content-between">

@@ -117,6 +117,35 @@
               </li>
             </ul>
           </li>
+
+
+           {{-- <li class="nav-item">
+            <a href="{{url('/dashboard/absensi/data')}}" class="nav-link">
+            <i class="nav-icon fa fa-book" aria-hidden="true"></i>
+            <p>Absensi</p>
+            </a>
+          </li> --}}
+
+        <li class="nav-item">
+            <a href="{{url('/dashboard/pembayaran/data')}}" class="nav-link">
+            <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>
+            <p>
+            Konfirmasi
+            @php
+                $trs=App\Models\Transaksi::where('status_member',2)->count();
+            @endphp
+            
+            @if ($trs > 0)
+              <span class="right badge badge-danger">
+                  New
+              </span>
+            @endif
+             
+            </p>
+            </a>
+        </li>
+
+
        
             
 

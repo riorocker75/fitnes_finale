@@ -29,7 +29,7 @@
 
       <div class="row">
           @php
-              $data_paket=App\Models\Paket::orderBy('id','desc')->get();
+              $data_paket=App\Models\Paket::orderBy('id','asc')->take(8)->get();
           @endphp
           @foreach ($data_paket as $dp)
               
@@ -37,9 +37,18 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{$dp->nama}}</h5>
-                    <p class="card-text">{!! $dp->deskripsi !!}</p>
-                    <a href="#" class="btn btn-primary">Rp. {{number_format($dp->harga)}}</a>
+                    <div style="margin-bottom:10px">
+                        <h5 class="card-title">{{$dp->nama}}</h5>
+
+                    </div>
+                    <br>
+                    <p class="card-text" >{!! $dp->deskripsi !!}</p>
+                    
+                    <h5>Rp. {{number_format($dp->harga)}}/ {{$dp->jangka_waktu}} bulan</h5>
+                    <div class="float-right">
+
+                        <a href="#" class="btn btn-block btn-outline-success">Pilih Paket</a>
+                    </div>
                 </div>
             </div>
               

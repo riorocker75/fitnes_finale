@@ -37,6 +37,39 @@ class MemberCtrl extends Controller
         return view('member.member');
     }
 
+    function beli_act(Request $request){
+
+          $request->validate([
+            'id' => 'required',
+        ]);
+        $id=$request->id;
+        $id_pengunjung=Session::get('nik_member');
+
+        $pengunjung=Pengunjung::where('nik',$id_pengunjung)->first();
+        $paket=Paket::where('id',$id)->first();
+
+        $kode_trs= "TRS-".mt_rand(10000, 99999);
+
+
+         DB::table('transaksi')->insert([
+            'kode_transaksi' => $kode_trs,
+            'id_member' => $pengunjung->id,
+            'id_paket' => $id,
+            'nama_paket' =>$paket->nama,
+            'harga' => $paket->harga,
+            'status_member' => 2,
+            'status' => 0
+        ]);
+
+        return redirect('/dashboard/member')->with('alert-success','Harap segera melakukan pembayaran');
+
+
+
+
+
+
+    } 
+
 
 
 

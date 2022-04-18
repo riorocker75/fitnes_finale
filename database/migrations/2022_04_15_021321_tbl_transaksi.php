@@ -24,6 +24,7 @@ class TblTransaksi extends Migration
                 
                 $table->dateTime('tgl_awal')->nullable();
                 $table->dateTime('tgl_akhir')->nullable();
+                $table->text('status_member')->comment('1=member,2=tahap review 0=berakhir')->nullable();                
                 $table->text('status')->comment('1=mulai, 0=berakhir')->nullable();                
 
            });

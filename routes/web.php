@@ -29,6 +29,7 @@ Route::post('/login/cek', [LoginCtrl::class,'cek_login']);
 
 Route::get('/logout', [LoginCtrl::class,'logout']);
 
+Route::post('/daftar/act', [LoginCtrl::class,'daftar_act']);
 
 /*
 --------------------------------------------- 
@@ -101,6 +102,17 @@ Route::get('/dashboard/absensi/delete/{id}', [AdminCtrl::class,'absensi_delete']
 
 
 
+//konfirmasi pembayaran
+Route::get('/dashboard/pembayaran/data', [AdminCtrl::class,'pembayaran_data']);
+Route::get('/dashboard/pembayaran/edit/{id}', [AdminCtrl::class,'pembayaran_edit']);
+Route::post('/dashboard/pembayaran/update', [AdminCtrl::class,'pembayaran_update']);
+Route::get('/dashboard/pembayaran/delete/{id}', [AdminCtrl::class,'pembayaran_delete']);
+
+Route::post('/ajax/konfirmasi', [AdminCtrl::class,'konfirmasi_bayar']);
+
+
+
+
 
 // cek ajax absensi member atau bukan
 Route::post('/ajax/cek_member', [AdminCtrl::class,'cek_member']);
@@ -113,6 +125,7 @@ Bagian besar member
 */
 Route::get('/dashboard/member',[MemberCtrl::class,'index']);
 
+Route::post('/dashboard/member/beli',[MemberCtrl::class,'beli_act']);
 
 
 

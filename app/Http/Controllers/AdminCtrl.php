@@ -60,57 +60,6 @@ class AdminCtrl extends Controller
     }
 
 
-    // pasien
-    function pasien(){
-        return view('pasien.pasien');
-    }
-
-    function pasien_act(Request $request){
-         $request->validate([
-            'nama' => 'required',
-            'nik' => 'required'
-        ]);
-
-         $date=date('Y-m-d');
-
-         DB::table('pasien')->insert([
-            'nama' => $request->nama,
-            'nik' =>$request->nik,
-            'tang gal_lahir'=> $request->tgl_lhr,
-            'tempat_lahir' => $request->tmp_lhr,
-            'agama'=> $request->agama,
-            'pekerjaan'=> $request->kerja,
-            'alamat'=> $request->alamat,
-            'nama_kepala'=> $request->kepala,
-            'tgl_registrasi' => $date,
-            'status' => 1
-        ]);
-
-        return redirect('/dashboard/pasien/data')->with('alert-success','Data diri anda sudah terkirim');
-
-    }
-
-     function pasien_data(){
-         $data = Pasien::orderBy('id','desc')->get();
-        return view('admin.pasien_data',[
-            'data' =>$data
-        ]);
-    }
-    function pasien_edit($id){
-          $data = Pasien::where('id',$id)->get();
-        return view('admin.pasien_edit',[
-            'data' =>$data
-        ]);
-    }
-
-    function pasien_update(){
-        
-    }
-    function pasien_delete(){
-               Pasien::where('id',$id)->delete();
-        return redirect('/dashboard/pasien/data')->with('alert-success','Data Berhasil');  
-    }
-
 
 //paket
 
@@ -380,7 +329,12 @@ function penjaga_delete($id){
 
 // absensi
 
-function absensi_data(){}
+function absensi_data(){
+    $data= Absensi::orderBy('id','desc')->get();
+    return view('admin.absensi_data',[
+        'data' =>$data
+    ]);
+}
 function absensi_add(){}
 function absensi_act(Request $request){
 
@@ -419,7 +373,35 @@ function absensi_act(Request $request){
 
 function absensi_edit(){}
 function absensi_update(Request $request){}
-function absensi_delete(){}
+function absensi_delete($id){
+        Absensi::where('id',$id)->delete();
+    return redirect('/dashboard/absensi/data')->with('alert-success','Data telah terhapus');
+
+}
+
+
+//pengecekan pembayaran
+
+function pembayaran_data(){
+    $data=Transaksi::where('status_member',2)->orderBy('id','desc')->get();
+    return view('admin.pembayaran_data',[
+        'data' => $data
+    ]);
+}
+
+function pembayaran_edit($id){
+    $data= Transaksi::where('id',$id)->get();
+    return view('admin.pembayaran_edit',[
+        'data' => $data
+    ]);
+}
+
+
+function pembayaran_delete($id){
+    Transaksi::where('id',$id)->delete();
+    return redirect('/dashboard/pembayaran/data')->with('alert-success','Data telah terhapus');
+
+}
 
 
 
@@ -447,6 +429,41 @@ function absensi_delete(){}
      }
 
  }
+
+
+//  konfirmasi bayar
+function konfirmasi_bayar(Request $request){
+    $id=$request->id;
+    $transaksi=Transaksi::where('id',$id)->first();
+    $paket=Paket::where('id',$transaksi->id_paket)->first();
+    $member=Pengunjung::where('id',$transaksi->id_member)->first();
+
+      $jangka= $paket->jangka_waktu;
+        $tgl_awal=Carbon::now();
+        $tgl_akhir=Carbon::now()->addMonths($jangka);
+
+        $kode_member= "MB-".mt_rand(1000, 9999);
+
+
+
+    Transaksi::where('id',$id)->update([
+        'tgl_awal' =>$tgl_awal,
+        'tgl_akhir' =>$tgl_akhir,
+        'status_member' => 1,
+        'status' =>1
+    ]);
+
+    Member::insert([
+        'kode_member' => $kode_member,
+        'id_pengunjung' => $transaksi->id_member,
+        'kode_transaksi' =>$transaksi->kode_transaksi,
+        'status' => 1
+    ]);
+
+
+
+
+}
 
 
 //  cek member absesni

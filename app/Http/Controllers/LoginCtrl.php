@@ -50,6 +50,7 @@ class LoginCtrl extends Controller
                 
                 if(Hash::check($password,$data->password)){
                     Session::put('mb_username', $data->username);
+                    Session::put('nik_member',$data->id_unik);
                     Session::put('level', 2);
                     Session::put('login-mb',TRUE);
                     return redirect('/dashboard/member')->with('alert-success','Selamat Datang Kembali');
@@ -69,6 +70,32 @@ class LoginCtrl extends Controller
     function logout(){
          Session::flush();
         return redirect('/login')->with('alert-success','Logout berhasil');
+    }
+
+    function daftar_act(Request $request){
+           $request->validate([
+            'nama' => 'required',
+            'nik' => 'required'
+        ]);
+
+         DB::table('pengunjung')->insert([
+            'nama' => $request->nama,
+            'nik' =>$request->nik,
+            'jenis_kelamin' =>$request->kelamin,
+            'lvl' => 1,
+            'status' => 1,
+        ]);
+
+        DB::table('user')->insert([
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'id_unik' => $request->nik,
+            'level' => 2,
+            'status' => 1
+        ]);
+
+        return redirect('/login')->with('alert-success','Selamat bergabung di Gym kami, Silahkan Login');
+
     }
 
 
