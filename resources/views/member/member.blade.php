@@ -90,7 +90,7 @@
                                     akhir: {{date('Y-m-d',strtotime($ct->tgl_akhir))}}
                                     <br>
                                 @else
-                                      menunggu konfirmasi
+                                     <td>............</td>
                                 @endif
                                
                                 </td>
