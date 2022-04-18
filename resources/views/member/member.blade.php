@@ -85,12 +85,19 @@
                                 <td>{{$no++}}</td>
                                 <td>{{$ct->nama_paket}}</td>
                                 <td>Rp.{{number_format($ct->harga)}}</td>
-                                <td>   mulai: {{date('Y-m-d',strtotime($ct->tgl_awal))}} <br>
+                                @if ($ct->status_member != 2)
+                                     <td>   mulai: {{date('Y-m-d',strtotime($ct->tgl_awal))}} <br>
                                     akhir: {{date('Y-m-d',strtotime($ct->tgl_akhir))}}
                                     <br>
+                                @else
+                                      menunggu konfirmasi
+                                @endif
+                               
                                 </td>
 
                                 <td>
+                                  @if ($ct->status_member != 2)
+                                      
                                       @php
                                         $now=date('Y-m-d');
                                         $lalu=date('Y-m-d', strtotime($ct->tgl_akhir))
@@ -100,6 +107,11 @@
                                     @else
                                     <label class="badge bg-primary">sedang berjalan</label>
                                     @endif
+
+                                 @else
+                                    <label class="badge bg-warning">Sedang menunggu konfirmasi</label>
+                                  @endif
+                                 
                                 </td>
                               
                             </tr>
