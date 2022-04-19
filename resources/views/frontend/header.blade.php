@@ -17,15 +17,11 @@
         </li>
 
           <li class="nav-item">
-                <a class="nav-link" href="#">Tentang</a>
+                <a class="nav-link" href="#tentang">Tentang</a>
            </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Kontak</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sitemap</a>
+          <a class="nav-link" href="#kontak">Kontak</a>
         </li>
 
       

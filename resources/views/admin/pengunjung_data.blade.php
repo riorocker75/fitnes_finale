@@ -27,10 +27,16 @@
          <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Data semua pengunjung</h3>
-                <a href="{{url('/dashboard/pengunjung/add')}}" class="btn btn-primary float-right">Tambah data</a>
+                
+
+                <div class="float-right">
+                  <a href="{{url('/dashboard/pengunjung/add')}}" class="btn btn-primary">Tambah data</a>
+                  <a href="{{url('/dashboard/cetak/pengunjung')}}" class="btn  btn-default"><i class="fa fa-print" aria-hidden="true"></i> Cetak Data</a>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+
                 <table id="table1" class="table table-bordered table-striped">
                   <thead>
                   <tr>

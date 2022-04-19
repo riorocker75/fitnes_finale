@@ -25,7 +25,9 @@
             <div class="card">
             <div class="card-header">
              Absensi
-             
+              <div class="float-right">
+                  <a href="{{url('/dashboard/cetak/absensi')}}" class="btn  btn-default"><i class="fa fa-print" aria-hidden="true"></i> Cetak Data</a>
+                </div>
             </div>
             @php
                 $now=date('Y-m-d');

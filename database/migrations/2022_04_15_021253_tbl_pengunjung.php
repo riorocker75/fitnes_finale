@@ -23,6 +23,8 @@ class TblPengunjung extends Migration
                 $table->text('tempat_lahir')->nullable();
                 $table->text('alamat')->nullable();
                 $table->text('no_hp')->nullable();
+                $table->dateTime('tanggal')->nullable();
+
                 $table->text('lvl')->nullable()->comment('1=pengunjung, 2=member');
                 $table->text('status')->nullable()->comment('1=aktif, 0=non');
 

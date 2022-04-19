@@ -152,6 +152,7 @@ function pengunjung_act(Request $request){
             'tempat_lahir' =>$request->tmp_lhr,
             'alamat' => $request->alamat,
             'no_hp' =>$request->no_hp,
+            'tanggal' =>date('Y-m-d'),
             'lvl' => 1,
             'status' => 1,
         ]);
@@ -404,6 +405,20 @@ function pembayaran_delete($id){
 }
 
 
+// transaksi
+function transaksi_data(){
+    $data=Transaksi::where('status',1)->orderBy('id','desc')->get();
+    return view('admin.transaksi_data',[
+        'data' => $data
+    ]);
+}
+
+function transaksi_delete($id){
+    Transaksi::where('id',$id)->delete();
+    return redirect('/dashboard/transaksi/data')->with('alert-success','Data telah terhapus');
+
+}
+
 
 
  function pengaturan(){
@@ -414,6 +429,11 @@ function pembayaran_delete($id){
     ]);
 
  }
+
+
+
+
+
 
   function pengaturan_update(Request $request){
      $username= Session::get('adm_username');
@@ -482,12 +502,33 @@ function cek_member(Request $request){
         ";
     }
 
-
-
 }
 
 
+// cetak
 
+function cetak_absensi(){
+    $year=date('Y');
+    $data=Absensi::whereYear('tanggal',$year)->get();
+    return view('cetak.cetak_absensi',[
+        'data'=> $data
+    ]);
+}
+
+function cetak_pengunjung(){
+    $year=date('Y');
+    $data=Pengunjung::whereYear('tanggal',$year)->get();
+    return view('cetak.cetak_pengunjung',[
+        'data'=> $data
+    ]);
+}
+
+function cetak_transaksi(){
+        $data=Transaksi::where('status',1)->orderBy('id','desc')->get();
+        return view('cetak.cetak_transaksi',[
+            'data' => $data
+        ]);
+}
 
 
 

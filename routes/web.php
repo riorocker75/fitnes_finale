@@ -110,6 +110,15 @@ Route::get('/dashboard/pembayaran/delete/{id}', [AdminCtrl::class,'pembayaran_de
 
 Route::post('/ajax/konfirmasi', [AdminCtrl::class,'konfirmasi_bayar']);
 
+// transaksi
+Route::get('/dashboard/transaksi/data', [AdminCtrl::class,'transaksi_data']);
+Route::get('/dashboard/transaksi/delete/{id}', [AdminCtrl::class,'transaksi_delete']);
+
+
+// cetak
+Route::get('/dashboard/cetak/absensi', [AdminCtrl::class,'cetak_absensi']);
+Route::get('/dashboard/cetak/pengunjung', [AdminCtrl::class,'cetak_pengunjung']);
+Route::get('/dashboard/cetak/transaksi', [AdminCtrl::class,'cetak_transaksi']);
 
 
 

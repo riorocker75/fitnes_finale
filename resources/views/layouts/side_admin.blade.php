@@ -146,6 +146,16 @@
         </li>
 
 
+        <li class="nav-item">
+            <a href="{{url('/dashboard/transaksi/data')}}" class="nav-link">
+            <i class="nav-icon fa fa-credit-card" aria-hidden="true"></i>
+            <p>
+              Transaksi
+            </p>
+            </a>
+        </li>
+
+
        
             
 

@@ -83,6 +83,7 @@ class LoginCtrl extends Controller
             'nik' =>$request->nik,
             'jenis_kelamin' =>$request->kelamin,
             'lvl' => 1,
+            'tanggal' =>date('Y-m-d'),
             'status' => 1,
         ]);
 
