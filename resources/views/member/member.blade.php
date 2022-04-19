@@ -42,7 +42,9 @@
                     <div class="float-right">
 
                         <a href="#" data-toggle="modal" data-target="#modal-paket-{{$dp->id}}" class="btn btn-block btn-outline-success">Pilih Paket</a>
-                    </div>
+                        
+                      </div>
+                      <a data-toggle="modal" data-target="#modal-detail{{$dp->id}}" class="btn btn-outline-primary">Detail</a>
                 </div>
             </div>
         </div>
@@ -175,6 +177,38 @@
     </div>
   </div>
 </div>
+@endforeach
+
+
+
+@php
+    $paket_det=App\Models\Paket::get()
+@endphp
+
+@foreach ($paket_det as $item)
+
+{{-- modal detail --}}
+<div class="modal fade" id="modal-detail{{$item->id}}">
+  <div class="modal-dialog">
+  <div class="modal-content">
+  <div class="modal-header">
+<h4 class="modal-title">Detail {{$item->nama}} </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+  
+     <div class="modal-body">
+        {!! $item->deskripsi !!}
+
+     </div>
+ 
+</div>
+
+</div>
+
+</div>
+
 @endforeach
 
 

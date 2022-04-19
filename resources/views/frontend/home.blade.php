@@ -42,13 +42,15 @@
 
                     </div>
                     <br>
-                    <p class="card-text" >{!! $dp->deskripsi !!}</p>
+                    <p class="card-text" >{!! Str::words($dp->deskripsi,30,'....') !!}</p>
                     
                     <h5>Rp. {{number_format($dp->harga)}}/ {{$dp->jangka_waktu}} bulan</h5>
                     <div class="float-right">
 
-                        <a href="#" class="btn btn-block btn-outline-success">Pilih Paket</a>
+                        <a <?php if(!Session::get('login-mb')){?> data-toggle="modal" data-target="#modal-daftar" <?php } ?> class="btn btn-block btn-outline-success">Pilih Paket</a>
                     </div>
+                        <a data-toggle="modal" data-target="#modal-detail{{$dp->id}}" class="btn btn-outline-primary">Detail</a>
+
                 </div>
             </div>
               
@@ -66,5 +68,38 @@
 
 
 </div>
+
+@php
+    $paket_det=App\Models\Paket::get()
+@endphp
+
+@foreach ($paket_det as $item)
+
+{{-- modal detail --}}
+<div class="modal fade" id="modal-detail{{$item->id}}">
+  <div class="modal-dialog">
+  <div class="modal-content">
+  <div class="modal-header">
+<h4 class="modal-title">Detail {{$item->nama}} </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+  
+     <div class="modal-body">
+        {!! $item->deskripsi !!}
+
+     </div>
+ 
+</div>
+
+</div>
+
+</div>
+
+@endforeach
+
+
+
 
 @endsection
