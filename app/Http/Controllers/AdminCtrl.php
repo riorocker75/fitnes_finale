@@ -530,6 +530,33 @@ function cetak_transaksi(){
         ]);
 }
 
+function role(){
+     $data=Admin::orderBy('id','asc')->where('level',1)->get();
+     return view('admin.r_role_data',[
+         'data' =>$data
+     ]);
+ }
+
+
+
+  function role_update(Request $request){
+    $request->validate([
+         'penjaga' => 'required',
+        
+    ]);
+
+ 
+        Admin::where('level',1)->update([
+            'id_unik' => $request->penjaga,
+            'username' => $request->username,
+            'password' => bcrypt($request->password)
+        ]);
+  
+
+     return redirect('/dashboard/role/data')->with('alert-success','Data sudah berubah');
+
+ }
+
 
 
 

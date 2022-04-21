@@ -36,7 +36,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                   <form action="{{ url('/dashboard/paket/act') }}" method="post">
+                   <form action="{{ url('/dashboard/paket/update') }}" method="post">
                        @csrf  
                        @method('POST')
 

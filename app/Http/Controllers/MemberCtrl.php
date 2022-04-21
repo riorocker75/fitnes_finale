@@ -63,12 +63,53 @@ class MemberCtrl extends Controller
 
         return redirect('/dashboard/member')->with('alert-success','Harap segera melakukan pembayaran');
 
-
-
-
-
-
     } 
+
+
+    // transaksi
+
+    function transaksi(){
+        $id=Session::get('mb_id');
+        $data=Transaksi::where('id_member',$id)->get();
+        return view('member.transaksi_member',[
+            'data' =>$data
+        ]);
+    }
+
+    function cetak_transaksi(){
+         $id=Session::get('mb_id');
+         $year=date('Y');
+  
+        $data=Transaksi::where('id_member',$id)->whereYear('tgl_awal',$year)->get();
+        return view('member.cetak_transaksi',[
+            'data' =>$data
+        ]);
+    }
+
+
+
+
+
+    function pengaturan(){
+        return view('member.pengaturan');
+    }
+
+    function pengaturan_update(Request $request){
+    $request->validate([
+        'password' => 'required',
+    ]); 
+    
+    $nik=Session::get('nik_member');
+
+
+        if($request->password != ""){
+            Admin::where('id_unik',$nik)->update([
+                'password' => bcrypt($request->password)
+            ]);
+        }
+        return redirect('/dashboard/member/pengaturan')->with('alert-success','Password telah diubah');
+
+    }
 
 
 

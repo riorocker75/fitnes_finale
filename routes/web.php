@@ -133,11 +133,17 @@ Bagian besar member
 ---------------------------------------------
 */
 Route::get('/dashboard/member',[MemberCtrl::class,'index']);
-
 Route::post('/dashboard/member/beli',[MemberCtrl::class,'beli_act']);
 
+// ubah password
+Route::get('/dashboard/member/pengaturan',[MemberCtrl::class,'pengaturan']);
+Route::post('/dashboard/member/pengaturan/update',[MemberCtrl::class,'pengaturan_update']);
 
 
+// transaksi member
+Route::get('/dashboard/member/transaksi/data',[MemberCtrl::class,'transaksi']);
+
+Route::get('/dashboard/member/cetak/transaksi',[MemberCtrl::class,'cetak_transaksi']);
 
 
 
@@ -147,7 +153,6 @@ Route::post('/dashboard/member/beli',[MemberCtrl::class,'beli_act']);
 Route::get('/dashboard/role/data', [AdminCtrl::class,'role']);
 Route::post('/dashboard/role/act', [AdminCtrl::class,'role_act']);
 
-Route::get('/dashboard/role/edit/{id}', [AdminCtrl::class,'role_edit']);
 Route::post('/dashboard/role/update', [AdminCtrl::class,'role_update']);
 
 // profile ubah password

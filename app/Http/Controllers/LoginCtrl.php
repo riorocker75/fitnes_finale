@@ -50,6 +50,8 @@ class LoginCtrl extends Controller
                 
                 if(Hash::check($password,$data->password)){
                     Session::put('mb_username', $data->username);
+                    Session::put('mb_id', $data->id);
+
                     Session::put('nik_member',$data->id_unik);
                     Session::put('level', 2);
                     Session::put('login-mb',TRUE);

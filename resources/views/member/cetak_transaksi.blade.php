@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cetak</title>
+    <title>Cetak Transaksi</title>
 {{-- databales --}}
   <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -51,62 +51,51 @@
 	</style>
 </head>
 <body onload="window.print();">
-   
-    <table border="1px">
-		<tr>
-			<td width="80px"><img src="" width="80px" /></td>
-			<td>
-				<table cellpadding="4">
-					{{-- <tr>
-						<td width="200px"><div class="lead">No kwitansi:</td>
-						<td><div class="value"></div></td>
-					</tr> --}}
-                     @php
-      
-                    @endphp
-					<tr>
-						<td><div class="lead">Kartu Berobat</div></td>
-						<td><div class="value-big">: {{jenis_kartu($dt->kartu_berobat)}}</div></td>
-					</tr>
-					<tr>
-						<td><div class="lead">Keteragan</div></td>
-						<td><div class="value-big">: {{$dt->diagnosa}}</div></td>
-					</tr>
-					<tr>
-						<td><div class="lead">Tanggal</div></td>
-						<td><div class="value-big">: {{format_tanggal(date('Y-m-d',strtotime($dt->tanggal)))}}</div></td>
-					</tr>
-					<tr>
-						<td><div class="lead">Sebesar</div></td>
-						<td><div class="value-big">: Rp.{{number_format($dt->uang_diterima)}} </div></td>
-					</tr>
-					{{-- <tr>
-						<td><div class="lead">Uang Sejumlah:</div></td>
-						<td><div class="value"> Tiga puluh ribu rupiah</div></td>
-					</tr> --}}
-					<tr>
-						<td colspan="2">&nbsp;</td>
-					</tr>
-					{{-- <tr>
-						<td><div class="lead">Petugas:</div></td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td>____________________________________________________</td>
-					</tr> --}}
-					<tr>
-						<td>&nbsp;</td>
-						<td><div class="value"></div></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
+	<div class="wrapper">
+		<div class="container">
+
+
+   <div style="text-align:center">
+        <h3> Laporan Tahunan Transaksi </h3>
+			<h3>Tahun : {{date('Y')}}</h3>
+   </div>
+   <table id="absensi" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                      <th>No</th>
+                    <th>Paket</th>
+                    <th>Harga</th>
+                    <th>Tanggal</th>
+            </tr>
+        </thead>
+        <tbody>
+		 <?php $no=1; ?>
+                @foreach ($data as $da)
+                @php
+                    $paket=App\Models\Paket::where('id',$da->id_paket)->first();
+                @endphp
+                    <tr>
+                        <td>{{$no++}}</td>
+                        <td>{{$da->nama_paket}}</td>
+                        <td>Rp.{{number_format($da->harga)}}</td>
+                        <td>{{format_tanggal(date('Y-m-d', strtotime($da->tgl_awal)))}}</td>
+                        
+                        
+                    </tr>
+                @endforeach
+            
+        </tbody>   
 	</table>
 
-
+		</div>
+	</div>
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 
+<script>
+$('#absensi').dataTable({
+	searching: false, paging: false, info: false
+});
+</script>    
 </body>
 </html>
