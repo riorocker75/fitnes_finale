@@ -33,7 +33,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>NIK</th>
+                    {{-- <th>NIK</th> --}}
                     <th>Nama</th>
                     <th>Paket</th>
                     <th>Harga</th>
@@ -52,7 +52,7 @@
                         @endphp
                            <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$cek_pengunjung->nik}}</td>
+                                {{-- <td>{{$cek_pengunjung->nik}}</td> --}}
                                 <td>{{$cek_pengunjung->nama}}</td>
 
                                 <td>{{$da->nama_paket}}</td>
