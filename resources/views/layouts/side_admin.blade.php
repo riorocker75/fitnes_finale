@@ -102,12 +102,12 @@
                   <p>Member</p>
                 </a>
               </li>
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
                 <a href="{{url('/dashboard/penjaga/data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penjaga / Trainer</p>
                 </a>
-              </li>
+              </li> --}}
 
                 <li class="nav-item">
                 <a href="{{url('/dashboard/role/data')}}" class="nav-link">

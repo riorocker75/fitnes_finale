@@ -540,13 +540,13 @@ function role(){
 
   function role_update(Request $request){
     $request->validate([
-         'penjaga' => 'required',
+         'username' => 'required',
         
     ]);
 
  
         Admin::where('level',1)->update([
-            'id_unik' => $request->penjaga,
+            // 'id_unik' => $request->penjaga,
             'username' => $request->username,
             'password' => bcrypt($request->password)
         ]);

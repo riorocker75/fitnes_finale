@@ -39,18 +39,7 @@
                    <form action="{{ url('/dashboard/role/update') }}" method="post">
                        @csrf  
                        @method('POST')
-                     <div class="form-group">
-                            <label>Penjaga</label>
-                            <select class="form-control select2" style="width: 100%;" name="penjaga" required>
-                                <option selected value="">Cari NIK penjaga</option>
-                                @php
-                                    $penjaga= \App\Models\Penjaga::get();
-                                @endphp
-                                @foreach ($penjaga as $pg)
-                                    <option value="{{$pg->nik}}">{{$pg->nama}} {{$pg->nik}}</option>
-                                @endforeach
-                            </select>
-                    </div>
+                     
 
                     <div class="form-group">
                       <label for="">Username</label>

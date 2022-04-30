@@ -87,11 +87,12 @@ class LoginCtrl extends Controller
             'tanggal' =>date('Y-m-d'),
             'status' => 1,
         ]);
+        $id = DB::getPdo()->lastInsertId();
 
         DB::table('user')->insert([
             'username' => $request->username,
             'password' => bcrypt($request->password),
-            // 'id_unik' => $request->nik,
+            'id_unik' => $id,
             'level' => 2,
             'status' => 1
         ]);

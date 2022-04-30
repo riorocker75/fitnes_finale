@@ -28,7 +28,7 @@
 <div class="login-box">
  <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a  class="h1"><b>Captain Gym</b></a>
+      <a  href="{{url('/')}}" class="h1"><b>Captain Gym</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sistem Informasi Fitness</p>

@@ -62,7 +62,7 @@
 
                      <div class="form-group">
                             <label>Deskripsi</label>
-                           <textarea name="deksripsi" id="summernote" cols="30" rows="30">{{$dp->deskripsi}}</textarea>
+                           <textarea name="deskripsi" id="summernote" cols="30" rows="30">{{$dp->deskripsi}}</textarea>
                     </div>
                        @endforeach
 

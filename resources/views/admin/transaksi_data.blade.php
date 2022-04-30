@@ -35,7 +35,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>NIK</th>
+                    {{-- <th>NIK</th> --}}
                     <th>Nama</th>
                     <th>Paket</th>
                     <th>Harga</th>
@@ -49,10 +49,13 @@
                         @php
                             $cek_pengunjung=App\Models\Pengunjung::where('id',$da->id_member)->first();
                             $paket=App\Models\Paket::where('id',$da->id_paket)->first();
+                            $data_pengunjung=App\Models\Pengunjung::where('status',2)->count();
                         @endphp
+
+                          @if($data_pengunjung > 0)
                            <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$cek_pengunjung->nik}}</td>
+                                {{-- <td>{{$cek_pengunjung->nik}}</td> --}}
                                 <td>{{$cek_pengunjung->nama}}</td>
 
                                 <td>{{$da->nama_paket}}</td>
@@ -61,6 +64,7 @@
                                 <a href="{{url('/dashboard/transaksi/delete/'.$da->id.'')}}" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
+                            @endif
                       @endforeach
                  
                   </tbody>

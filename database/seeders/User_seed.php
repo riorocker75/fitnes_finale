@@ -19,7 +19,7 @@ class User_seed extends Seeder
           'id' => 1,
           'username' => "admin",
           'password' =>bcrypt("admin"),
-          'id_unik' => "123456789",
+          'id_unik' => "1",
           'level' =>1,
           'status'=> 1
         ]);
@@ -28,7 +28,7 @@ class User_seed extends Seeder
           'id' => 2,
           'username' => "member",
           'password' =>bcrypt("member"),
-           'id_unik' => "789456123",
+           'id_unik' => "2",
           'level' =>2,
           'status'=> 1
         ]);
