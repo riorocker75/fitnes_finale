@@ -63,7 +63,7 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nik</th>
+                {{-- <th>Nik</th> --}}
                 <th>Nama</th>
                 <th>Tanggal</th>
                 <th>status</th>
@@ -78,7 +78,7 @@
             <tr>
 					
                 <td>{{$no++}}</td>
-				<td>{{$cek_pengunjung->nik}}</td>
+				{{-- <td>{{$cek_pengunjung->nik}}</td> --}}
 				<td>{{$cek_pengunjung->nama}} </td>
 				<td>{{format_tanggal(date('Y-m-d',strtotime($da->tanggal)))}} <br>
 					{{$da->jam_masuk}} <br>

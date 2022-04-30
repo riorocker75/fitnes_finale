@@ -37,11 +37,10 @@
                 <div class="row">
                  <div class="col-md-6">
                          
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="exampleInputEmail1">Nomor Induk Kependudukan</label>
                                 <input type="number" class="form-control" name="nik"  required>
-
-                            </div>
+                            </div> --}}
 
                              <div class="form-group">
                                 <label for="exampleInputEmail1">Nama</label>

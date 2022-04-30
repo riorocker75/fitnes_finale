@@ -74,8 +74,8 @@
                   <tbody>
                       <?php $no=1; ?>
                       @php
-                            $nik=Session::get('nik_member');
-                            $cek_pengunjung=App\Models\Pengunjung::where('nik',$nik)->first();
+                            $id=Session::get('mb_id');
+                            $cek_pengunjung=App\Models\Pengunjung::where('id',$id)->first();
 
                           $cek_trs= App\Models\Transaksi::where('id_member',$cek_pengunjung->id)->orderBy('id','desc')->get();
                       @endphp

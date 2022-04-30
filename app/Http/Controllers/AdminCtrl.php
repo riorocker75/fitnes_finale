@@ -141,12 +141,11 @@ function pengunjung_act(Request $request){
     
          $request->validate([
             'nama' => 'required',
-            'nik' => 'required'
         ]);
 
          DB::table('pengunjung')->insert([
             'nama' => $request->nama,
-            'nik' =>$request->nik,
+            // 'nik' =>$request->nik,
             'jenis_kelamin' =>$request->kelamin,
             'tanggal_lahir' =>$request->tgl_lhr,
             'tempat_lahir' =>$request->tmp_lhr,
@@ -172,13 +171,13 @@ function pengunjung_update(Request $request){
 
          $request->validate([
             'nama' => 'required',
-            'nik' => 'required'
+            // 'nik' => 'required'
         ]);
          $id=$request->id;
 
          DB::table('pengunjung')->where('id',$id)->update([
             'nama' => $request->nama,
-            'nik' =>$request->nik,
+            // 'nik' =>$request->nik,
             'jenis_kelamin' =>$request->kelamin,
             'tanggal_lahir' =>$request->tgl_lhr,
             'tempat_lahir' =>$request->tmp_lhr,

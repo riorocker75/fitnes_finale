@@ -52,7 +52,7 @@ class LoginCtrl extends Controller
                     Session::put('mb_username', $data->username);
                     Session::put('mb_id', $data->id);
 
-                    Session::put('nik_member',$data->id_unik);
+                    // Session::put('nik_member',$data->id_unik);
                     Session::put('level', 2);
                     Session::put('login-mb',TRUE);
                     return redirect('/dashboard/member')->with('alert-success','Selamat Datang Kembali');
@@ -77,12 +77,11 @@ class LoginCtrl extends Controller
     function daftar_act(Request $request){
            $request->validate([
             'nama' => 'required',
-            'nik' => 'required'
         ]);
 
          DB::table('pengunjung')->insert([
             'nama' => $request->nama,
-            'nik' =>$request->nik,
+            // 'nik' =>$request->nik,
             'jenis_kelamin' =>$request->kelamin,
             'lvl' => 1,
             'tanggal' =>date('Y-m-d'),
@@ -92,13 +91,12 @@ class LoginCtrl extends Controller
         DB::table('user')->insert([
             'username' => $request->username,
             'password' => bcrypt($request->password),
-            'id_unik' => $request->nik,
+            // 'id_unik' => $request->nik,
             'level' => 2,
             'status' => 1
         ]);
 
         return redirect('/login')->with('alert-success','Selamat bergabung di Gym kami, Silahkan Login');
-
     }
 
 

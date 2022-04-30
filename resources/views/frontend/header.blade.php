@@ -60,10 +60,10 @@
             <input type='text' class="form-control" name="nama" required/>
         </div>
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="">NIK</label>
             <input type='text' class="form-control" name="nik" required/>
-        </div>
+        </div> --}}
 
           <div class="form-group">
             <label for="exampleInputEmail1">Jenis Kelamin</label>

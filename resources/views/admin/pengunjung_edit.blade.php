@@ -38,12 +38,12 @@
                 <div class="row">
                  <div class="col-md-6">
                          
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="exampleInputEmail1">Nomor Induk Kependudukan</label>
                                 <input type="number" class="form-control" name="nik" value="{{$dt->nik}}" required>
-                                <input name="id" value="{{$dt->id}}" required hidden>
-
-                            </div>
+                                
+                              </div> --}}
+                              <input name="id" value="{{$dt->id}}" required hidden>
 
                              <div class="form-group">
                                 <label for="exampleInputEmail1">Nama</label>

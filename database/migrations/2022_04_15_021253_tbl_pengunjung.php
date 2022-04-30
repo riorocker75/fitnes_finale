@@ -16,7 +16,7 @@ class TblPengunjung extends Migration
        if (!Schema::hasTable('pengunjung')) {
            Schema::create('pengunjung', function (Blueprint $table) {
                $table->bigIncrements('id');
-                $table->text('nik');
+                // $table->text('nik');
                 $table->text('nama');
                 $table->text('jenis_kelamin')->nullable();
                 $table->dateTime('tanggal_lahir')->nullable();

@@ -42,7 +42,7 @@
                 <div class="form-group">
                             <label>Pengunjung</label>
                             <select class="form-control select2" style="width: 100%;" name="member" required>
-                                <option selected value="">Cari Nik Pengunjung</option>
+                                <option selected value="">Cari Nama Pengunjung</option>
                                 @php
                                     $pengunjung= \App\Models\Pengunjung::get();
                                 @endphp

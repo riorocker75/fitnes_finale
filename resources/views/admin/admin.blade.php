@@ -92,7 +92,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>NIK</th>
+                    {{-- <th>NIK</th> --}}
                     <th>Nama</th>
                     <th>Jam masuk</th>
                     <th>Jam Keluar</th>
@@ -110,7 +110,7 @@
                         @endphp
                            <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$cek_pengunjung->nik}}</td>
+                                {{-- <td>{{$cek_pengunjung->nik}}</td> --}}
                                 <td>{{$cek_pengunjung->nama}} </td>
                                 <td>{{$da->jam_masuk}} </td>
                                 <td>{{$da->jam_keluar}}</td>
@@ -155,7 +155,7 @@
                <div class="form-group">
                       <label>Pengunjung</label>
                       <select class="form-control select2" style="width: 100%;" name="cek_member" id="cek_member" required>
-                          <option selected value="">Cari Nik Pengunjung</option>
+                          <option selected value="">Cari Nama Pengunjung</option>
                           @php
                               $pengunjung= \App\Models\Pengunjung::get();
                           @endphp

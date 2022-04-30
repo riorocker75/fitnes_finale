@@ -63,7 +63,7 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>NIK</th>
+                {{-- <th>NIK</th> --}}
                 <th>Nama</th>
                 <th>Telepon</th>
                 <th>Alamat</th>
@@ -78,7 +78,7 @@
             <tr>
 					
                 <td>{{$no++}}</td>
-				  <td>{{$dt->nik}}</td>
+				  {{-- <td>{{$dt->nik}}</td> --}}
                 <td>{{$dt->nama}} </td>
                 <td>{{$dt->no_hp}} </td>
                 <td>{{$dt->alamat}}</td>

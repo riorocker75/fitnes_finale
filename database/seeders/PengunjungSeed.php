@@ -18,7 +18,6 @@ class PengunjungSeed extends Seeder
          DB::table('pengunjung')->delete();
         Pengunjung::create([
           'id' => 1,
-          'nik' => 789456123,
           'nama' => "Sumail",
           'jenis_kelamin' => "1",
           'tanggal_lahir' =>  Carbon::now()->format('Y-m-d'),
@@ -32,7 +31,6 @@ class PengunjungSeed extends Seeder
  
         Pengunjung::create([
           'id' => 2,
-          'nik' => 456123789,
           'nama' => "Taehyung",
           'jenis_kelamin' => "1",
           'tanggal_lahir' =>  Carbon::now()->format('Y-m-d'),
