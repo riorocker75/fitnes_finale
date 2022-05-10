@@ -43,9 +43,9 @@ class MemberCtrl extends Controller
             'id' => 'required',
         ]);
         $id=$request->id;
-        $id_pengunjung=Session::get('nik_member');
+        $id_pengunjung=Session::get('id');
 
-        $pengunjung=Pengunjung::where('nik',$id_pengunjung)->first();
+        $pengunjung=Pengunjung::where('id',$id_pengunjung)->first();
         $paket=Paket::where('id',$id)->first();
 
         $kode_trs= "TRS-".mt_rand(10000, 99999);
@@ -99,11 +99,11 @@ class MemberCtrl extends Controller
         'password' => 'required',
     ]); 
     
-    $nik=Session::get('nik_member');
+    $nik=Session::get('mb_id');
 
 
         if($request->password != ""){
-            Admin::where('id_unik',$nik)->update([
+            Admin::where('id',$nik)->update([
                 'password' => bcrypt($request->password)
             ]);
         }
