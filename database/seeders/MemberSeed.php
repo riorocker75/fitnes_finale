@@ -16,12 +16,12 @@ class MemberSeed extends Seeder
     public function run()
     {
          DB::table('member')->delete();
-        Member::create([
-          'id' => 1,
-          'kode_member' => "MB-1309",
-          'id_pengunjung' => "1",
-          'kode_transaksi' => "TR-123",
-          'status'=> 1
-        ]);
+        // Member::create([
+        //   'id' => 1,
+        //   'kode_member' => "MB-1309",
+        //   'id_pengunjung' => "1",
+        //   'kode_transaksi' => "TR-123",
+        //   'status'=> 1
+        // ]);
     }
 }
