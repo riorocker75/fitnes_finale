@@ -105,7 +105,7 @@
                            <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{$dt->kode_member}}
-                                  <p>{{$pengunjung->nama}}</p>
+                                  {{-- <p>{{$pengunjung->nama}}</p> --}}
                                   <p>{{$pengunjung->nik}}</p>
                                 </td>
 
