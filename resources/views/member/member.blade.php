@@ -77,7 +77,7 @@
                             $id=Session::get('mb_id');
                             $cek_pengunjung=App\Models\Pengunjung::where('id',$id)->first();
 
-                             $cek_trs= App\Models\Transaksi::where('id_member',$cek_pengunjung->id)->orderBy('id','desc')->get();
+                             $cek_trs= App\Models\Transaksi::where('id_member',$id)->orderBy('id','desc')->get();
                       @endphp
                       @foreach ($cek_trs as $ct)
                         @php
