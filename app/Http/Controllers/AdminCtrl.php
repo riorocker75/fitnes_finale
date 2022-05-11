@@ -198,7 +198,7 @@ function pengunjung_delete($id){
 
 // member
 function member_data(){
-    $data=Member::orderBy('id','desc')->get();
+    $data=Pengunjung::orderBy('id','desc')->get();
     return view('admin.member_data',[
         'data' => $data
     ]);
