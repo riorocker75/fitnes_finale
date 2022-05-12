@@ -53,7 +53,7 @@ class MemberCtrl extends Controller
 
          DB::table('transaksi')->insert([
             'kode_transaksi' => $kode_trs,
-            'id_member' => $pengunjung->id,
+            'id_member' => $id_pengunjung,
             'id_paket' => $id,
             'nama_paket' =>$paket->nama,
             'harga' => $paket->harga,
@@ -88,8 +88,6 @@ class MemberCtrl extends Controller
 
 
 
-
-
     function pengaturan(){
         return view('member.pengaturan');
     }
@@ -100,7 +98,6 @@ class MemberCtrl extends Controller
     ]); 
     
     $nik=Session::get('mb_id');
-
 
         if($request->password != ""){
             Admin::where('id',$nik)->update([
