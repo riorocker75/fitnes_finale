@@ -52,7 +52,7 @@ class LoginCtrl extends Controller
                     Session::put('mb_username', $data->username);
                     Session::put('mb_id', $data->id);
 
-                    // Session::put('nik_member',$data->id_unik);
+                    Session::put('id_unik',$data->id_unik);
                     Session::put('level', 2);
                     Session::put('login-mb',TRUE);
                     return redirect('/dashboard/member')->with('alert-success','Selamat Datang Kembali');

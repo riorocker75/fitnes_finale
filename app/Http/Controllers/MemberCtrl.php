@@ -43,7 +43,7 @@ class MemberCtrl extends Controller
             'id' => 'required',
         ]);
         $id=$request->id;
-        $id_pengunjung=Session::get('mb_id');
+        $id_pengunjung=Session::get('id_unik');
 
         $pengunjung=Pengunjung::where('id',$id_pengunjung)->first();
         $paket=Paket::where('id',$id)->first();
