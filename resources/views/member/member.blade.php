@@ -74,7 +74,7 @@
                   <tbody>
                       <?php $no=1; ?>
                       @php
-                            $id=Session::get('mb_id');
+                            $id=Session::get('id_unik');
                             $cek_pengunjung=App\Models\Pengunjung::where('id',$id)->first();
 
                              $cek_trs= App\Models\Transaksi::where('id_member',$id)->orderBy('id','desc')->get();
